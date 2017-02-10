@@ -28,6 +28,9 @@ export default class ChildParentCommunication extends Component {
   }
 
   onNewPost(post) {
+    this.setState({
+      posts: this.state.posts.concat([post])
+    })
     // EXERCISE: write code here so the new post gets added to the state
     // and therefore rendered on the page
   }
@@ -63,21 +66,28 @@ class AddNewPost extends Component {
 
   onSubmit(e) {
     e.preventDefault()
+    if (this.state.inputValue === '') return
     // EXERCISE: make this function:
     // 1. POST the new post to http://localhost:3004/posts using the fetch API
     // 2. Call the onNewPost prop to tell the parent component about the new post
 
     // to help: here's how to make a POST request using the fetch api
-    // fetch('http://localhost:3004/posts', {
-    //   method: 'post',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     // put the data you want to POST here
-    //   })
-    // })
+    fetch('http://localhost:3004/posts', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: this.state.inputValue
+        // put the data you want to POST here
+      })
+    }).then(newPost => newPost.json()).then(newPost => {
+      this.props.onNewPost(newPost)
+      this.setState({
+        inputValue: '',
+      })
+    })
   }
 
   onInputChange(e) {

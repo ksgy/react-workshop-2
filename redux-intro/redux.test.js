@@ -4,7 +4,7 @@
 
 import { createStore } from 'redux'
 
-test.only('a redux store is created with a function', () => {
+test('a redux store is created with a function', () => {
   const store = createStore(() => {})
   expect(store).toBeDefined()
 })

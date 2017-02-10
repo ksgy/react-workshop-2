@@ -24,7 +24,7 @@ ContextExercise.childContextTypes = {
 class SomeChildComponent extends Component {
   render() {
     return (
-      <p>Context value: { this.context.secretValue }</p>
+      <p>Context value: { this.context.secretValue } { this.context.otherSecretValue }</p>
     )
   }
 }

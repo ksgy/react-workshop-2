@@ -254,6 +254,8 @@ function runDevServer(host, port, protocol) {
     // https://github.com/facebookincubator/create-react-app/issues/293
     watchOptions: {
       ignored: /node_modules/
+      // IF you are on Windows in Vagrant set this
+      // poll: true
     },
     // Enable HTTPS if the HTTPS environment variable is set to 'true'
     https: protocol === "https",

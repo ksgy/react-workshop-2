@@ -11,11 +11,25 @@ export default (state, action) => {
   switch (action.type) {
     case 'NEW_TODO':
       return {
-        todos: this.state.todos.concat([{
-          id: this.state.todos.length,
+        todos: state.todos.concat([{
+          id: state.todos.length + 1,
           done: false,
           text: action.data.text,
         }])
+      }
+    case 'TOGGLE_TODO':
+      const id = action.id
+      return {
+        todos: state.todos.map(todo => {
+          if (todo.id === id) {
+            return {
+              ...todo,
+              done: !todo.done
+            }
+          } else {
+            return todo
+          }
+        })
       }
     default:
       return state

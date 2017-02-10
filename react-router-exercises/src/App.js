@@ -3,11 +3,12 @@ import './App.css'
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch,
+  Redirect
 } from 'react-router-dom'
 import Home from './Home'
 import Posts from './Posts'
-import SinglePost from './SinglePost'
 
 class App extends Component {
   render() {
@@ -27,9 +28,16 @@ class App extends Component {
 
             <div className="exercise-item">
               {/* EXERCISE: add another Route for an "about page" */}
-              <Route exact path="/" component={Home} />
-              <Route exact path="/posts" component={Posts} />
-              <Route exact path="/posts/:id" component={SinglePost} />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/posts" component={Posts} />
+                <Route exact path="/404" render={() => (
+                  <p>NOT FOUND!</p>
+                )} />
+                <Route path="" render={() => (
+                  <Redirect to="/404" />
+                )} />
+            </Switch>
             </div>
           </div>
         </Router>

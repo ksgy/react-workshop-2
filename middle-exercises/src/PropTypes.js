@@ -4,7 +4,7 @@ export default class PropTypesExercise extends Component {
   render() {
     return (
       <div>
-        <HelloPerson />
+        <HelloPerson name="Jack" />
         <OtherHelloPerson />
       </div>
     )
@@ -20,6 +20,7 @@ class HelloPerson extends Component {
 }
 
 HelloPerson.propTypes = {
+  name: PropTypes.string.isRequired,
   // EXERCISE: fill this out with the right propTypes such that we see
   // an error if we forget to pass a name property
 }
