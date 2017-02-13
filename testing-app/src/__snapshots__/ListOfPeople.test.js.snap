@@ -1,0 +1,22 @@
+exports[`test it matches the snapshot 1`] = `
+<div>
+  <h2>
+    List of Jack\'s Friends
+  </h2>
+  <ul>
+    <li>
+      <div
+        style={
+          Object {
+            "color": "blue",
+          }
+        }>
+        <p>
+          Name: 
+          Jack
+        </p>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
