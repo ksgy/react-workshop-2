@@ -1,6 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 // make sure you've got the API running first!
+
+const Post = props => (
+  <p>{ props.post.title }</p>
+)
+
+Post.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired
+  })
+}
+
 
 export default class AsyncDataExercise extends Component {
   constructor(props) {
@@ -15,6 +27,8 @@ export default class AsyncDataExercise extends Component {
       .then(data => data.json())
       .then(posts => {
         // EXERCISE: how do I store the new posts as state on the component?
+        console.log('posts', posts)
+        this.setState({posts})
       })
   }
 
@@ -25,7 +39,7 @@ export default class AsyncDataExercise extends Component {
           // EXERCISE: render each post here
           // EXERCISE: abstract a <Post> component
           // and define propTypes for it
-          null
+          <li key={post.id}><Post post={post} /></li>
         )) }
       </ul>
     )

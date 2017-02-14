@@ -1,6 +1,7 @@
 import { createStore } from 'redux'
 
 const reducer = (state, action) => {
+  if (!state) state = 0
   return state
 }
 

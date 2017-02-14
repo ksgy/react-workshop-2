@@ -6,6 +6,7 @@ export default class ContextExercise extends Component {
   getChildContext() {
     return {
       secretValue: 'bar',
+      otherSecretValue: 'foo',
     }
   }
   render() {
@@ -19,15 +20,17 @@ export default class ContextExercise extends Component {
 
 ContextExercise.childContextTypes = {
   secretValue: PropTypes.string.isRequired,
+  otherSecretValue: PropTypes.string.isRequired,
 }
 
 class SomeChildComponent extends Component {
   render() {
     return (
-      <p>Context value: { this.context.secretValue }</p>
+      <p>Context value: { this.context.secretValue }{ this.context.otherSecretValue }</p>
     )
   }
 }
 SomeChildComponent.contextTypes = {
   secretValue: PropTypes.string.isRequired,
+  otherSecretValue: PropTypes.string.isRequired,
 }

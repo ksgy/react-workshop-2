@@ -20,6 +20,7 @@ class HelloPerson extends Component {
 }
 
 HelloPerson.propTypes = {
+  name: PropTypes.string.isRequired
   // EXERCISE: fill this out with the right propTypes such that we see
   // an error if we forget to pass a name property
 }
@@ -27,11 +28,21 @@ HelloPerson.propTypes = {
 HelloPerson.defaultProps = {
   // EXERCISE: fill this out so that if we don't pass the name prop, it defaults
   // to "JacK" (or your own name, I'm easy!)
+    name: 'kacsa'
 }
 
 const OtherHelloPerson = props => (
   <p>OtherHello, { props.name }</p>
 )
 
+OtherHelloPerson.propTypes = {
+  name: PropTypes.string.isRequired
+}
+
+OtherHelloPerson.defaultProps = {
+    // EXERCISE: fill this out so that if we don't pass the name prop, it defaults
+    // to "JacK" (or your own name, I'm easy!)
+    name: 'nemkacsa'
+}
 // EXERCISE: how can we still declare propTypes and default props for functional,
 // stateless components?
